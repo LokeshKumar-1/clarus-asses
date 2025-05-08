@@ -6,10 +6,11 @@ import {
   StyleSheet,
   View,
 } from "react-native";
+import colors from "../../utils/colors";
 
 const ScrollableScreen = ({
   children,
-  addedStyles,
+  addedStyles = {},
   scrollable = true,
   includePageRefresh = false,
   refreshingStatus = false,
@@ -25,19 +26,18 @@ const ScrollableScreen = ({
         horizontal={isHorizontalScroll}
         showsVerticalScrollIndicator={false}
         keyboardDismissMode={Platform.OS === "ios" ? "interactive" : "on-drag"}
-        style={styles.container}
         refreshControl={
           includePageRefresh && (
             <RefreshControl
-              colors={[Colors.primary, Colors.black]}
-              tintColor={Colors.primary}
+              colors={[colors.primary, colors.black]}
+              tintColor={colors.primary}
               refreshing={refreshingStatus}
               onRefresh={onRefresh}
             />
           )
         }
         contentContainerStyle={[
-          styles.container,
+          styles.scrollContentContainer,
           { paddingBottom: tabBarheight + 20 },
           addedStyles,
         ]}
@@ -46,12 +46,17 @@ const ScrollableScreen = ({
       </ScrollView>
     );
   }
+
   return <View style={[styles.container, addedStyles]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  scrollContentContainer: {
     flexGrow: 1,
+    paddingHorizontal: 16,
   },
 });
 
