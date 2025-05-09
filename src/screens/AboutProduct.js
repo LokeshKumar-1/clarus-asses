@@ -6,6 +6,7 @@ import Header from "../components/headers/Header";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Rating } from "react-native-ratings";
 
 const AboutProduct = ({ navigation, route }) => {
   const { productData } = route.params;
@@ -22,6 +23,26 @@ const AboutProduct = ({ navigation, route }) => {
     <SafeScreen>
       <Header />
       <View style={styles.contentCont}>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 4,
+            alignSelf: "flex-end",
+            paddingRight: 16,
+          }}
+        >
+          <Rating
+            ratingCount={5}
+            imageSize={12}
+            startingValue={Number(rating.rate) || 0}
+            readonly
+          />
+          <Text
+            style={{ fontSize: 12, color: "#878787" }}
+          >{`(${rating.count})`}</Text>
+        </View>
         <Image
           source={{ uri: image }}
           style={styles.image}
@@ -59,12 +80,13 @@ const AboutProduct = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 300,
+    height: "60%",
     paddingBottom: 10,
     borderBottomWidth: 5,
     elevation: 5,
     borderBottomColor: "#f1f3f6",
     paddingHorizontal: 16,
+    marginTop: 16,
   },
   contentCont: {
     paddingVertical: 16,
@@ -75,7 +97,7 @@ const styles = StyleSheet.create({
   },
   desc: {
     color: "#606265",
-    marginTop: 4,
+    marginTop: 10,
   },
   bottomContentCont: {
     paddingHorizontal: 16,
