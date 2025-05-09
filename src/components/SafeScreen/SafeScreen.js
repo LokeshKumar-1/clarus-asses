@@ -1,5 +1,11 @@
 import React from "react";
-import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native";
+import {
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View,
+} from "react-native";
 
 const SafeScreen = ({
   children,
@@ -10,7 +16,14 @@ const SafeScreen = ({
   isHidden = false,
 }) => {
   return (
-    <SafeAreaView style={[styles.screen, { backgroundColor }]}>
+    <SafeAreaView
+      style={[
+        styles.screen,
+        {
+          backgroundColor,
+        },
+      ]}
+    >
       <StatusBar
         barStyle={barStyle}
         backgroundColor={statusBarBackgroundColor}

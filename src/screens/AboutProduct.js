@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import SafeScreen from "../components/SafeScreen/SafeScreen";
 import { useEffect } from "react";
 import { getProductsDetails } from "../api/homeApi";
@@ -7,6 +7,7 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Rating } from "react-native-ratings";
+import ScrollableScreen from "../components/SafeScreen/ScrollableScreen";
 
 const AboutProduct = ({ navigation, route }) => {
   const { productData } = route.params;
@@ -50,7 +51,10 @@ const AboutProduct = ({ navigation, route }) => {
         />
         <View style={styles.bottomContentCont}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.desc}>{`${description} - (${category})`}</Text>
+          <Text
+            style={styles.desc}
+            numberOfLines={9}
+          >{`${description} - (${category})`}</Text>
           <View
             style={{
               display: "flex",
@@ -80,7 +84,7 @@ const AboutProduct = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: "60%",
+    height: 300,
     paddingBottom: 10,
     borderBottomWidth: 5,
     elevation: 5,

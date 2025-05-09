@@ -16,6 +16,7 @@ import {
   showFailureToastMessage,
   showSuccessToastMessage,
 } from "../components/toastMessage/ToastMessageProvider";
+import ScrollableScreen from "../components/SafeScreen/ScrollableScreen";
 
 const AddAndEdit = ({ navigation, route }) => {
   const { purposeForVisit, productDetails } = route.params || {};
